@@ -77,6 +77,11 @@ public class MainActivity extends Activity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -99,11 +104,19 @@ public class MainActivity extends Activity {
 
     @OnClick(R.id.enabled)
     void onEnabledClick() {
-        mVibrator.vibrate(10);
+        if (mApiTokenPreference.isSet()) {
+            mVibrator.vibrate(10);
+        }
     }
 
     @OnCheckedChanged(R.id.enabled)
     void onEnabledChecked(boolean checked) {
+
+        if (checked && !mApiTokenPreference.isSet()) {
+            mEnabled.setChecked(false);
+            startActivity(new Intent(this, BotActivity.class));
+            return;
+        }
 
         mEnabledPreference.set(checked);
 
