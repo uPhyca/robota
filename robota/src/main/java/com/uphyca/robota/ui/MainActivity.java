@@ -26,13 +26,11 @@ import android.widget.ToggleButton;
 
 import com.uphyca.robota.InjectionUtils;
 import com.uphyca.robota.R;
+import com.uphyca.robota.data.api.ApiToken;
 import com.uphyca.robota.data.api.Enabled;
-import com.uphyca.robota.data.api.Main;
-import com.uphyca.robota.data.api.Networking;
 import com.uphyca.robota.data.prefs.BooleanPreference;
+import com.uphyca.robota.data.prefs.StringPreference;
 import com.uphyca.robota.service.RobotaService;
-
-import java.util.concurrent.Executor;
 
 import javax.inject.Inject;
 
@@ -48,21 +46,17 @@ public class MainActivity extends Activity {
 
     @Inject
     @Enabled
-    BooleanPreference mEnablePreference;
+    BooleanPreference mEnabledPreference;
 
     @Inject
     Vibrator mVibrator;
 
+    @Inject
+    @ApiToken
+    StringPreference mApiTokenPreference;
+
     @InjectView(R.id.enabled)
     ToggleButton mEnabled;
-
-    @Inject
-    @Networking
-    Executor mExecutor;
-
-    @Inject
-    @Main
-    Executor mDispatcher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,9 +66,13 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         encureViews();
 
-        if (savedInstanceState == null && mEnablePreference.get()) {
+        if (savedInstanceState == null && mEnabledPreference.get()) {
             Intent intent = new Intent(this, RobotaService.class);
             startService(intent);
+        }
+
+        if (!mApiTokenPreference.isSet()) {
+            startActivity(new Intent(this, BotActivity.class));
         }
     }
 
@@ -106,7 +104,8 @@ public class MainActivity extends Activity {
 
     @OnCheckedChanged(R.id.enabled)
     void onEnabledChecked(boolean checked) {
-        mEnablePreference.set(checked);
+
+        mEnabledPreference.set(checked);
 
         Intent intent = new Intent(this, RobotaService.class);
         if (checked) {
@@ -118,7 +117,7 @@ public class MainActivity extends Activity {
 
     private void encureViews() {
         ButterKnife.inject(this);
-        mEnabled.setChecked(mEnablePreference.get());
+        mEnabled.setChecked(mEnabledPreference.get());
     }
 
     private void startSettings() {

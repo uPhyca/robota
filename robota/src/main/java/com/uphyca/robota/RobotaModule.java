@@ -39,8 +39,8 @@ import com.uphyca.robota.data.api.BackoffPolicy;
 import com.uphyca.robota.data.api.Enabled;
 import com.uphyca.robota.data.api.Environment;
 import com.uphyca.robota.data.api.Main;
-import com.uphyca.robota.data.api.Networking;
 import com.uphyca.robota.data.api.MessageFilter;
+import com.uphyca.robota.data.api.Networking;
 import com.uphyca.robota.data.api.PollingInterval;
 import com.uphyca.robota.data.api.StreamConnection;
 import com.uphyca.robota.data.prefs.BooleanPreference;
@@ -50,6 +50,7 @@ import com.uphyca.robota.receiver.ConnectivityListener;
 import com.uphyca.robota.receiver.StartupListener;
 import com.uphyca.robota.service.PostTextService;
 import com.uphyca.robota.service.RobotaService;
+import com.uphyca.robota.ui.BotActivity;
 import com.uphyca.robota.ui.MainActivity;
 import com.uphyca.robota.ui.OssLicensesActivity;
 
@@ -71,13 +72,12 @@ import dagger.Provides;
         RobotaService.class, //
         PostTextService.class, //
         MainActivity.class, //
+        BotActivity.BotFragment.class, //
         ConnectivityListener.class, //
         StartupListener.class, //
         OssLicensesActivity.LicenseDialogFragment.class, //
 })
 public class RobotaModule {
-
-    private static final String API_TOKEN = "73d7cb6cd089c1b3216aa162047ab387";
 
     private final Application mApplication;
     private static final long DEFAULT_POLLING_INTERVAL_MILLIS = TimeUnit.MINUTES.toMillis(5);
@@ -192,7 +192,7 @@ public class RobotaModule {
     @Singleton
     @ApiToken
     StringPreference provideApiTokenPreference(SharedPreferences pref) {
-        return new StringPreference(pref, "api_token", API_TOKEN);
+        return new StringPreference(pref, "api_token");
     }
 
     @Provides

@@ -15,5 +15,11 @@
     <string name="title_build_version">Build version</string>
     <string name="title_source_code">Source code</string>
     <string name="github_url">https://github.com/uphyca/robota</string>
+    <string name="title_bot">Bot</string>
+    <string name="label_bot">Bot</string>
+    <string name="field_api_token">API Token</string>
+    <string name="update">Update</string>
+    <string name="authentication_failed">Authentication failed: %1$s</string>
+    <string name="authorized">Authorized</string>
 
 </resources>

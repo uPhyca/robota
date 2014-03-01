@@ -46,6 +46,13 @@ public class SettingActivity extends Activity {
 
         @Override
         public void onViewCreated(View view, Bundle savedInstanceState) {
+            findPreference("bot").setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                @Override
+                public boolean onPreferenceClick(Preference preference) {
+                    startActivity(new Intent(getActivity(), BotActivity.class));
+                    return true;
+                }
+            });
             findPreference("about").setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {

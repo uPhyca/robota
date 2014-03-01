@@ -29,6 +29,10 @@
             android:label="@string/label_settings" />
 
         <activity
+            android:name=".ui.BotActivity"
+            android:label="@string/label_bot" />
+
+        <activity
             android:name=".ui.AboutActivity"
             android:label="@string/label_about" />
 
