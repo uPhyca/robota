@@ -38,11 +38,11 @@ import com.uphyca.robota.data.api.ApiToken;
 import com.uphyca.robota.data.api.BackoffPolicy;
 import com.uphyca.robota.data.api.Enabled;
 import com.uphyca.robota.data.api.Environment;
-import com.uphyca.robota.data.api.Http;
+import com.uphyca.robota.data.api.Main;
+import com.uphyca.robota.data.api.Networking;
 import com.uphyca.robota.data.api.MessageFilter;
 import com.uphyca.robota.data.api.PollingInterval;
 import com.uphyca.robota.data.api.StreamConnection;
-import com.uphyca.robota.data.api.Ui;
 import com.uphyca.robota.data.prefs.BooleanPreference;
 import com.uphyca.robota.data.prefs.LongPreference;
 import com.uphyca.robota.data.prefs.StringPreference;
@@ -51,6 +51,7 @@ import com.uphyca.robota.receiver.StartupListener;
 import com.uphyca.robota.service.PostTextService;
 import com.uphyca.robota.service.RobotaService;
 import com.uphyca.robota.ui.MainActivity;
+import com.uphyca.robota.ui.OssLicensesActivity;
 
 import java.io.File;
 import java.io.IOException;
@@ -67,11 +68,16 @@ import dagger.Provides;
  * @author Sosuke Masui (masui@uphyca.com)
  */
 @Module(injects = {
-        RobotaService.class, PostTextService.class, MainActivity.class, ConnectivityListener.class, StartupListener.class
+        RobotaService.class, //
+        PostTextService.class, //
+        MainActivity.class, //
+        ConnectivityListener.class, //
+        StartupListener.class, //
+        OssLicensesActivity.LicenseDialogFragment.class, //
 })
 public class RobotaModule {
 
-    private static final String API_TOKEN = "SET-YOUR-API-KEY";
+    private static final String API_TOKEN = "73d7cb6cd089c1b3216aa162047ab387";
 
     private final Application mApplication;
     private static final long DEFAULT_POLLING_INTERVAL_MILLIS = TimeUnit.MINUTES.toMillis(5);
@@ -144,14 +150,14 @@ public class RobotaModule {
 
     @Provides
     @Singleton
-    @Http
+    @Networking
     Executor provideHttpExecutor() {
         return Executors.newCachedThreadPool();
     }
 
     @Provides
     @Singleton
-    @Ui
+    @Main
     Executor provideUiExecutor() {
         return new AndroidExecutor();
     }

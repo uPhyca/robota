@@ -24,6 +24,18 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".ui.SettingActivity"
+            android:label="@string/label_settings" />
+
+        <activity
+            android:name=".ui.AboutActivity"
+            android:label="@string/label_about" />
+
+        <activity
+            android:name=".ui.OssLicensesActivity"
+            android:label="@string/label_oss_licenses" />
+
         <service android:name=".service.RobotaService" />
 
         <service android:name=".service.PostTextService" />

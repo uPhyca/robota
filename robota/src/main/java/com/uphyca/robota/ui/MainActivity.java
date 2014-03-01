@@ -27,8 +27,8 @@ import android.widget.ToggleButton;
 import com.uphyca.robota.InjectionUtils;
 import com.uphyca.robota.R;
 import com.uphyca.robota.data.api.Enabled;
-import com.uphyca.robota.data.api.Http;
-import com.uphyca.robota.data.api.Ui;
+import com.uphyca.robota.data.api.Main;
+import com.uphyca.robota.data.api.Networking;
 import com.uphyca.robota.data.prefs.BooleanPreference;
 import com.uphyca.robota.service.RobotaService;
 
@@ -57,11 +57,11 @@ public class MainActivity extends Activity {
     ToggleButton mEnabled;
 
     @Inject
-    @Http
+    @Networking
     Executor mExecutor;
 
     @Inject
-    @Ui
+    @Main
     Executor mDispatcher;
 
     @Override
@@ -93,6 +93,7 @@ public class MainActivity extends Activity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_settings) {
+            startSettings();
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -118,5 +119,9 @@ public class MainActivity extends Activity {
     private void encureViews() {
         ButterKnife.inject(this);
         mEnabled.setChecked(mEnablePreference.get());
+    }
+
+    private void startSettings() {
+        startActivity(new Intent(this, SettingActivity.class));
     }
 }
