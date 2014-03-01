@@ -71,7 +71,7 @@ import dagger.Provides;
 })
 public class RobotaModule {
 
-    private static final String API_TOKEN = "SET-YOUR-API-TOKEN";
+    private static final String API_TOKEN = "SET-YOUR-API-KEY";
 
     private final Application mApplication;
     private static final long DEFAULT_POLLING_INTERVAL_MILLIS = TimeUnit.MINUTES.toMillis(5);

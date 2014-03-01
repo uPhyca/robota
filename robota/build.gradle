@@ -2,11 +2,11 @@ apply plugin: 'android'
 
 android {
     compileSdkVersion 19
-    buildToolsVersion "19.0.1"
+    buildToolsVersion "19.0.2"
 
     defaultConfig {
         packageName "com.uphyca.robota"
-        minSdkVersion 17
+        minSdkVersion 15
         targetSdkVersion 19
         versionCode 1
         versionName "0.9"
@@ -20,7 +20,7 @@ android {
 }
 
 dependencies {
-    compile "com.android.support:appcompat-v7:${supportVersion}"
+    compile "com.android.support:support-v13:${supportVersion}"
     compile "com.uphyca.idobata:idobata4j-core:${idobata4jVersion}"
     compile "com.squareup.dagger:dagger:${daggerVersion}"
     compile "com.squareup.okhttp:okhttp:${okVersion}"
