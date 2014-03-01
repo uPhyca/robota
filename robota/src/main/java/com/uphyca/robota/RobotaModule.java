@@ -56,6 +56,9 @@ import com.uphyca.robota.ui.OssLicensesActivity;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.CookieHandler;
+import java.net.CookieManager;
+import java.net.CookiePolicy;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -90,7 +93,7 @@ public class RobotaModule {
 
     @Provides
     @Singleton
-    OkHttpClient provideOkHttpClient() {
+    OkHttpClient provideOkHttpClient(CookieHandler cookieHandler) {
         OkHttpClient okHttpClient = new OkHttpClient();
         File cacheDir = new File(mApplication.getCacheDir(), "okhttp");
         final HttpResponseCache cache;
@@ -99,14 +102,21 @@ public class RobotaModule {
         } catch (IOException e) {
             throw new IllegalStateException(e);
         }
-        okHttpClient.setResponseCache(cache);
+        okHttpClient.setResponseCache(cache)
+                    .setCookieHandler(cookieHandler);
         return okHttpClient;
     }
 
     @Provides
     @Singleton
-    Client provideClient(OkHttpClient okHttpClient) {
-        return new OkClient(okHttpClient);
+    CookieHandler provideCookieHandler() {
+        return new CookieManager(null, CookiePolicy.ACCEPT_NONE);
+    }
+
+    @Provides
+    @Singleton
+    Client provideClient(OkHttpClient okHttpClient, CookieHandler cookieHandler) {
+        return new OkClient(okHttpClient, cookieHandler);
     }
 
     @Provides
