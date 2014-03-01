@@ -1,0 +1,1 @@
+robota makes your Android phone as Idobata(https://idobata.io) bot
