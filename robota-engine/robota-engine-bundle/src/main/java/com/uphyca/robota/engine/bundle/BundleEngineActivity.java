@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.uphyca.example.robota.engine;
+package com.uphyca.robota.engine.bundle;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -22,7 +22,7 @@ import android.os.Bundle;
 /**
  * @author Sosuke Masui (masui@uphyca.com)
  */
-public class EngineExample extends Activity {
+public class BundleEngineActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

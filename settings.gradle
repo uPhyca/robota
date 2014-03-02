@@ -1,2 +1,2 @@
-include 'robota'
-include ':robota-engine:robota-engine-core', ':robota-engine:robota-engine-example'
+include 'robota', 'robota-engine:robota-engine-bundle'
+include ':robota-engine:robota-engine-core'
