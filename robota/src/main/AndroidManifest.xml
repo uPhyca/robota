@@ -2,7 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.uphyca.robota">
 
-    <permission android:name="com.uphyca.robota.permission.RECEIVE_MESSAGE_CREATED"/>
+    <permission
+        android:name="com.uphyca.robota.permission.RECEIVE_MESSAGE_CREATED"
+        android:label="@string/label_permission_receive_message_created"
+        android:description="@string/description_permission_receive_message_created"/>
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
@@ -47,6 +50,11 @@
             android:name=".ui.OssLicensesActivity"
             android:label="@string/label_oss_licenses"
             android:parentActivityName=".ui.AboutActivity"/>
+
+        <activity
+            android:name=".ui.InstalledEnginesActivity"
+            android:label="@string/label_installed_engines"
+            android:parentActivityName=".ui.SettingActivity"/>
 
         <service android:name=".service.RobotaService"/>
 

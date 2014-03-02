@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.uphyca.example.robota.engine" >
+          package="com.uphyca.example.robota.engine">
 
     <uses-permission android:name="com.uphyca.robota.permission.RECEIVE_MESSAGE_CREATED"/>
 
@@ -8,35 +8,53 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
+
         <activity
             android:name=".EngineExample"
-            android:label="@string/app_name" >
+            android:label="@string/app_name">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
 
-        <receiver android:name=".PingEngine">
+        <receiver
+            android:name=".HelpEngine"
+            android:label="@string/label_help"
+            android:description="@string/description_help">
             <intent-filter>
                 <action android:name="com.uphyca.robota.action.MESSAGE_CREATED"/>
             </intent-filter>
         </receiver>
 
-        <receiver android:name=".EchoEngine">
+        <receiver
+            android:name=".HelpQueryEngine"
+            android:label="@string/label_help_query"
+            android:description="@string/description_help_query">
             <intent-filter>
                 <action android:name="com.uphyca.robota.action.MESSAGE_CREATED"/>
             </intent-filter>
         </receiver>
 
-        <receiver android:name=".TimeEngine">
+        <receiver
+            android:name=".PingEngine"
+            android:label="@string/label_ping"
+            android:description="@string/description_ping">
             <intent-filter>
                 <action android:name="com.uphyca.robota.action.MESSAGE_CREATED"/>
             </intent-filter>
         </receiver>
 
+        <receiver
+            android:name=".EchoEngine"
+            android:label="@string/label_echo"
+            android:description="@string/description_echo">
+            <intent-filter>
+                <action android:name="com.uphyca.robota.action.MESSAGE_CREATED"/>
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

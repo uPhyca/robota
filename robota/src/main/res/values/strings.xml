@@ -21,5 +21,9 @@
     <string name="update">Update</string>
     <string name="authentication_failed">Authentication failed: %1$s</string>
     <string name="authorized">Authorized</string>
+    <string name="label_installed_engines">Installed engines</string>
+    <string name="title_installed_engines">Installed engines</string>
+    <string name="description_permission_receive_message_created">Allows the app to receive Idobata messages and respond to the message.</string>
+    <string name="label_permission_receive_message_created">receive Idobata messages</string>
 
 </resources>

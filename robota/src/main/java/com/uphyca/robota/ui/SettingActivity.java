@@ -53,6 +53,13 @@ public class SettingActivity extends Activity {
                     return true;
                 }
             });
+            findPreference("installed_engines").setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                @Override
+                public boolean onPreferenceClick(Preference preference) {
+                    startActivity(new Intent(getActivity(), InstalledEnginesActivity.class));
+                    return true;
+                }
+            });
             findPreference("about").setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {

@@ -20,12 +20,16 @@ import android.content.Context;
 
 import com.uphyca.robota.engine.Bot;
 import com.uphyca.robota.engine.EngineBase;
-import com.uphyca.robota.engine.Help;
 import com.uphyca.robota.engine.TextMessage;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Reply with pong
+ * 
+ * @author Sosuke Masui (masui@uphyca.com)
+ */
 public class PingEngine extends EngineBase {
 
     private static final String EVENT_PATTERN_TEMPLATE = "^[@]?%s[:,]?\\s*(?:ping$)";
@@ -38,10 +42,5 @@ public class PingEngine extends EngineBase {
             return null;
         }
         return "PONG";
-    }
-
-    @Override
-    protected Help describe(Context context) {
-        return new Help("ping", "Reply with pong");
     }
 }

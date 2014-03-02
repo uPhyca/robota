@@ -4,4 +4,17 @@
     <string name="app_name">robota-engine-example</string>
     <string name="hello_world">Try mention with message \"help\" to your bot on Idobata.</string>
 
+
+    <string name="label_help"><![CDATA[${bot_name} help]]></string>
+    <string name="description_help"><![CDATA[Displays all of the help commands that ${bot_name} knows about.]]></string>
+
+    <string name="label_help_query"><![CDATA[${bot_name} help <query>]]></string>
+    <string name="description_help_query"><![CDATA[Displays all of the help commands that ${bot_name} knows about.]]></string>
+
+    <string name="label_ping"><![CDATA[${bot_name} ping]]></string>
+    <string name="description_ping"><![CDATA[Reply with pong]]></string>
+
+    <string name="label_echo"><![CDATA[${bot_name} echo <text>]]></string>
+    <string name="description_echo"><![CDATA[Reply back with <text>]]></string>
+
 </resources>

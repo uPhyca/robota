@@ -1,17 +1,28 @@
+/*
+ * Copyright (C) 2014 uPhyca Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
 package com.uphyca.robota.engine;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.text.TextUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.TreeSet;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import static com.uphyca.robota.engine.Robota.EXTRA_BODY;
 import static com.uphyca.robota.engine.Robota.EXTRA_BODY_PLAIN;
@@ -32,14 +43,10 @@ import static com.uphyca.robota.engine.Robota.EXTRA_SENDER_ID;
 import static com.uphyca.robota.engine.Robota.EXTRA_SENDER_NAME;
 import static com.uphyca.robota.engine.Robota.EXTRA_SENDER_TYPE;
 
+/**
+ * @author Sosuke Masui (masui@uphyca.com)
+ */
 public abstract class EngineBase extends BroadcastReceiver {
-
-    private static final String HELP_PATTERN_TEMPLATE = "^[@]?%s[:,]?\\s*(?:help\\s*((.*)?)$)";
-    private static final String HELP_RESULT_TEMPLATE = "%s %s - %s";
-    private static final String ERROR_MESSAGE_TEMPLATE = "No available commands match %s";
-
-    private static final Help HELP = new Help("help", "Displays all of the help commands that hubot knows about.");
-    private static final Help QUERY_HELP = new Help("help <query>", "Displays all help commands that match <query>.");
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -53,18 +60,20 @@ public abstract class EngineBase extends BroadcastReceiver {
         }
     }
 
+    /**
+     * This method is called when the BroadcastReceiver is receiving an message from Idobata.
+     * 
+     * @param context The Context in which the receiver is running.
+     * @param bot The Bot in which the receiver is running.
+     * @param textMessage The message being received.
+     * @return
+     */
     protected abstract String onMessageReceived(Context context, Bot bot, TextMessage textMessage);
-
-    protected abstract Help describe(Context context);
 
     private void handleMessageCreated(Context context, Intent intent) {
 
         Bot bot = parseBot(intent);
         TextMessage textMessage = parseTextMessage(intent);
-
-        if (handleHelp(context, bot, textMessage)) {
-            return;
-        }
 
         if (getResultData() != null) {
             return;
@@ -74,86 +83,6 @@ public abstract class EngineBase extends BroadcastReceiver {
         if (result != null) {
             setResultData(result);
         }
-    }
-
-    private boolean handleHelp(Context context, Bot bot, TextMessage textMessage) {
-        Pattern pt = Pattern.compile(String.format(HELP_PATTERN_TEMPLATE, bot.getName()), Pattern.CASE_INSENSITIVE);
-        Matcher mt = pt.matcher(textMessage.getText());
-        if (!mt.find()) {
-            return false;
-        }
-        String query = mt.group(1);
-
-        if (TextUtils.isEmpty(query) || HELP.getEvent()
-                                            .matches(query)) {
-            pushHelp(bot, query, HELP);
-        }
-
-        if (TextUtils.isEmpty(query) || QUERY_HELP.getEvent()
-                                                  .matches(query)) {
-            pushHelp(bot, query, QUERY_HELP);
-        }
-
-        Help help = describe(context);
-
-        if (hasDescribed(help) && TextUtils.isEmpty(query) || help.getEvent()
-                                                                  .matches(query)) {
-            pushHelp(bot, query, help);
-        }
-
-        pushErrorMessageIfNecessary(query);
-
-        return true;
-    }
-
-    private void pushErrorMessageIfNecessary(String query) {
-        String resultData = getResultData();
-        if (resultData != null) {
-            return;
-        }
-
-        String errorMessage = String.format(ERROR_MESSAGE_TEMPLATE, query);
-        setResultData(errorMessage);
-    }
-
-    private boolean hasDescribed(Help help) {
-        return help != null && help.getEvent() != null && help.getDescription() != null;
-    }
-
-    private void pushHelp(Bot bot, String query, Help help) {
-        String resultData = getResultData();
-        String helpMessage = String.format(HELP_RESULT_TEMPLATE, bot.getName(), help.getEvent(), help.getDescription());
-
-        if (resultData != null && resultData.contains(helpMessage)) {
-            return;
-        }
-
-        StringBuilder builder = new StringBuilder();
-
-        String errorMessage = String.format(ERROR_MESSAGE_TEMPLATE, query);
-
-        if (resultData != null && !resultData.equals(errorMessage)) {
-            builder.append(resultData);
-            builder.append('\n');
-        }
-
-        builder.append(helpMessage.replaceAll("[\\r\\n]+", " "));
-        String sortedResult = sortHelp(builder.toString());
-        setResultData(sortedResult);
-    }
-
-    private String sortHelp(String help) {
-        String[] lines = help.split("\n");
-        TreeSet<String> sorter = new TreeSet<String>();
-        sorter.addAll(Arrays.asList(lines));
-        StringBuilder builder = new StringBuilder();
-        for (String each : sorter) {
-            if (builder.length() > 0) {
-                builder.append('\n');
-            }
-            builder.append(each);
-        }
-        return builder.toString();
     }
 
     private Bot parseBot(Intent intent) {

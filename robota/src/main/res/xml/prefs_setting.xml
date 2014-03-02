@@ -3,10 +3,14 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <PreferenceScreen
         android:key="bot"
-        android:title="@string/title_bot" />
+        android:title="@string/title_bot"/>
+
+    <PreferenceScreen
+        android:key="installed_engines"
+        android:title="@string/title_installed_engines"/>
 
     <PreferenceScreen
         android:key="about"
-        android:title="@string/title_about" />
+        android:title="@string/title_about"/>
 
 </PreferenceScreen>

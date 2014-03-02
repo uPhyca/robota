@@ -20,12 +20,16 @@ import android.content.Context;
 
 import com.uphyca.robota.engine.Bot;
 import com.uphyca.robota.engine.EngineBase;
-import com.uphyca.robota.engine.Help;
 import com.uphyca.robota.engine.TextMessage;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Reply back with <text>
+ * 
+ * @author Sosuke Masui (masui@uphyca.com)
+ */
 public class EchoEngine extends EngineBase {
 
     private static final String EVENT_PATTERN_TEMPLATE = "^[@]?%s[:,]?\\s*(?:echo\\s*((.*)?)$)";
@@ -38,10 +42,5 @@ public class EchoEngine extends EngineBase {
             return null;
         }
         return mt.group(1);
-    }
-
-    @Override
-    protected Help describe(Context context) {
-        return new Help("echo <text>", "Reply back with <text>");
     }
 }

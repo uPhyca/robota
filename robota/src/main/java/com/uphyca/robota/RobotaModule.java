@@ -51,6 +51,7 @@ import com.uphyca.robota.receiver.StartupListener;
 import com.uphyca.robota.service.PostTextService;
 import com.uphyca.robota.service.RobotaService;
 import com.uphyca.robota.ui.BotActivity;
+import com.uphyca.robota.ui.InstalledEnginesActivity;
 import com.uphyca.robota.ui.MainActivity;
 import com.uphyca.robota.ui.OssLicensesActivity;
 
@@ -79,6 +80,7 @@ import dagger.Provides;
         ConnectivityListener.class, //
         StartupListener.class, //
         OssLicensesActivity.LicenseDialogFragment.class, //
+        InstalledEnginesActivity.InstalledEnginesListFragment.class, //
 })
 public class RobotaModule {
 
