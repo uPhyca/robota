@@ -33,15 +33,30 @@ The Intent also contains following extras that describes the bot.
 The Intent is broadcasted by robota application.
 You can receive the Intent on a BroadcastReceiver with "com.uphyca.robota.action.MESSAGE_CREATED" action.
 
+ - Add permisson "com.uphyca.robota.permission.RECEIVE_MESSAGE_CREATED" to receive the message.
+ - Add label to receiver for help message.
+ - Add description to receiver for help description.
+ - Add intent filter "com.uphyca.robota.action.MESSAGE_CREATED" to receive the message.
+
+AndroidManifest.xml
 ```XML
 <uses-permission android:name="com.uphyca.robota.permission.RECEIVE_MESSAGE_CREATED"/>
 
-<receiver android:name=".ExampleEngine">
+<receiver android:name=".ExampleEngine"
+          android:label="@string/label_example"
+          android:description="@string/description_example">
     <intent-filter>
         <action android:name="com.uphyca.robota.action.MESSAGE_CREATED"/>
     </intent-filter>
 </receiver>
 ```
+
+strings.xml
+```XML
+<string name="label_example"><![CDATA[hello]]></string>
+<string name="description_example"><![CDATA[say HELLO]]></string>
+```
+
 
 The receiver will call setResuleData(String) to responds the message.
 
@@ -50,7 +65,10 @@ public class ExampleEngine extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        setResultData("Hello, Idobata");
+        String bodyPlain = intent.getStringExtra("com.uphyca.robota.extra.BODY_PLAIN");
+        if(bodyPlain.equalsIgnoreCase("hello")) {
+            setResultData("HELLO");
+        }
     }
 }
 ```
@@ -59,10 +77,9 @@ public class ExampleEngine extends BroadcastReceiver {
 robota-engine
 ----
 
-robota-engine is a reference implementation of bot-engine.
-
+robota-engine is a library of bot-engine.
+the library provides onMessageReceived() method which delived parsed Intent to Bot and TextMessage objects.
 The following example is a echo program, extends EngineBase which is the base class to build your bot engine.
-
 
 ```Java
 public class EchoEngine extends EngineBase {
