@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">robota-engine-example</string>
+    <string name="hello_world">Try mention with message \"help\" to your bot on Idobata.</string>
+
+</resources>

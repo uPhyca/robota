@@ -21,8 +21,20 @@ buildscript {
 }
 
 allprojects {
+    buildscript {
+        repositories {
+            mavenCentral()
+        }
+    }
+
     repositories {
         mavenCentral()
         mavenLocal()
     }
+
+    group = GROUP
+    version = VERSION_NAME
+
+    apply plugin: 'maven'
 }
+

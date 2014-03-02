@@ -6,8 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
 
-import com.uphyca.robota.Robota;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -15,24 +13,24 @@ import java.util.TreeSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static com.uphyca.robota.Robota.EXTRA_BODY;
-import static com.uphyca.robota.Robota.EXTRA_BODY_PLAIN;
-import static com.uphyca.robota.Robota.EXTRA_BOT_API_TOKEN;
-import static com.uphyca.robota.Robota.EXTRA_BOT_ICON_URL;
-import static com.uphyca.robota.Robota.EXTRA_BOT_ID;
-import static com.uphyca.robota.Robota.EXTRA_BOT_NAME;
-import static com.uphyca.robota.Robota.EXTRA_CREATED_AT;
-import static com.uphyca.robota.Robota.EXTRA_ID;
-import static com.uphyca.robota.Robota.EXTRA_IMAGE_URLS;
-import static com.uphyca.robota.Robota.EXTRA_MENTIONS;
-import static com.uphyca.robota.Robota.EXTRA_MULTILINE;
-import static com.uphyca.robota.Robota.EXTRA_ORGANIZATION_SLUG;
-import static com.uphyca.robota.Robota.EXTRA_ROOM_ID;
-import static com.uphyca.robota.Robota.EXTRA_ROOM_NAME;
-import static com.uphyca.robota.Robota.EXTRA_SENDER_ICON_URL;
-import static com.uphyca.robota.Robota.EXTRA_SENDER_ID;
-import static com.uphyca.robota.Robota.EXTRA_SENDER_NAME;
-import static com.uphyca.robota.Robota.EXTRA_SENDER_TYPE;
+import static com.uphyca.robota.engine.Robota.EXTRA_BODY;
+import static com.uphyca.robota.engine.Robota.EXTRA_BODY_PLAIN;
+import static com.uphyca.robota.engine.Robota.EXTRA_BOT_API_TOKEN;
+import static com.uphyca.robota.engine.Robota.EXTRA_BOT_ICON_URL;
+import static com.uphyca.robota.engine.Robota.EXTRA_BOT_ID;
+import static com.uphyca.robota.engine.Robota.EXTRA_BOT_NAME;
+import static com.uphyca.robota.engine.Robota.EXTRA_CREATED_AT;
+import static com.uphyca.robota.engine.Robota.EXTRA_ID;
+import static com.uphyca.robota.engine.Robota.EXTRA_IMAGE_URLS;
+import static com.uphyca.robota.engine.Robota.EXTRA_MENTIONS;
+import static com.uphyca.robota.engine.Robota.EXTRA_MULTILINE;
+import static com.uphyca.robota.engine.Robota.EXTRA_ORGANIZATION_SLUG;
+import static com.uphyca.robota.engine.Robota.EXTRA_ROOM_ID;
+import static com.uphyca.robota.engine.Robota.EXTRA_ROOM_NAME;
+import static com.uphyca.robota.engine.Robota.EXTRA_SENDER_ICON_URL;
+import static com.uphyca.robota.engine.Robota.EXTRA_SENDER_ID;
+import static com.uphyca.robota.engine.Robota.EXTRA_SENDER_NAME;
+import static com.uphyca.robota.engine.Robota.EXTRA_SENDER_TYPE;
 
 public abstract class EngineBase extends BroadcastReceiver {
 

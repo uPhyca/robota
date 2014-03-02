@@ -14,16 +14,22 @@
  * limitations under the License.
  */
 
-package com.uphyca.robota.engine;
+package com.uphyca.example.robota.engine;
 
 import android.content.Context;
 
+import com.uphyca.robota.engine.Bot;
+import com.uphyca.robota.engine.EngineBase;
+import com.uphyca.robota.engine.Help;
+import com.uphyca.robota.engine.TextMessage;
+
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class PingEngine extends EngineBase {
+public class TimeEngine extends EngineBase {
 
-    private static final String EVENT_PATTERN_TEMPLATE = "^[@]?%s[:,]?\\s*(?:ping$)";
+    private static final String EVENT_PATTERN_TEMPLATE = "^[@]?%s[:,]?\\s*(?:time$)";
 
     @Override
     protected String onMessageReceived(Context context, Bot bot, TextMessage textMessage) {
@@ -32,11 +38,11 @@ public class PingEngine extends EngineBase {
         if (!mt.find()) {
             return null;
         }
-        return "PONG";
+        return new Date().toString();
     }
 
     @Override
     protected Help describe(Context context) {
-        return new Help("ping", "Reply with pong");
+        return new Help("time", "Reply with current time");
     }
 }

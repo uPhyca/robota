@@ -62,7 +62,7 @@ public class TextMessage implements Serializable, Parcelable {
                                                        .getClassLoader());
     }
 
-    public static Parcelable.Creator<TextMessage> CREATOR = new Parcelable.Creator<TextMessage>() {
+    public static Creator<TextMessage> CREATOR = new Creator<TextMessage>() {
         public TextMessage createFromParcel(Parcel source) {
             return new TextMessage(source);
         }

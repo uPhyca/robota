@@ -14,9 +14,14 @@
  * limitations under the License.
  */
 
-package com.uphyca.robota.engine;
+package com.uphyca.example.robota.engine;
 
 import android.content.Context;
+
+import com.uphyca.robota.engine.Bot;
+import com.uphyca.robota.engine.EngineBase;
+import com.uphyca.robota.engine.Help;
+import com.uphyca.robota.engine.TextMessage;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

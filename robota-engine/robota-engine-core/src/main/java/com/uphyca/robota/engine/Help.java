@@ -51,7 +51,7 @@ public class Help implements Serializable, Parcelable {
         this.mDescription = in.readString();
     }
 
-    public static Parcelable.Creator<Help> CREATOR = new Parcelable.Creator<Help>() {
+    public static Creator<Help> CREATOR = new Creator<Help>() {
         public Help createFromParcel(Parcel source) {
             return new Help(source);
         }

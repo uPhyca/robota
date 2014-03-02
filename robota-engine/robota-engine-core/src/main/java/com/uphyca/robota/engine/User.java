@@ -48,7 +48,7 @@ public class User implements Serializable, Parcelable {
         this.mName = in.readString();
     }
 
-    public static Parcelable.Creator<User> CREATOR = new Parcelable.Creator<User>() {
+    public static Creator<User> CREATOR = new Creator<User>() {
         public User createFromParcel(Parcel source) {
             return new User(source);
         }
