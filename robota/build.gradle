@@ -11,8 +11,16 @@ android {
         versionCode 1
         versionName VERSION_NAME
     }
+
+    signingConfigs {
+        release
+    }
+
     buildTypes {
         release {
+            if (project.hasProperty('storeFile')) {
+                signingConfig signingConfigs.release
+            }
             runProguard false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
@@ -27,4 +35,17 @@ dependencies {
     provided "com.squareup.dagger:dagger-compiler:${daggerVersion}"
 
     compile "com.jakewharton:butterknife:${butterknifeVersion}"
+}
+
+if (project.hasProperty('storeFile')) {
+    android.signingConfigs.release.storeFile = file(storeFile)
+}
+if (project.hasProperty('storePassword')) {
+    android.signingConfigs.release.storePassword = storePassword
+}
+if (project.hasProperty('keyAlias')) {
+    android.signingConfigs.release.keyAlias = keyAlias
+}
+if (project.hasProperty('keyPassword')) {
+    android.signingConfigs.release.keyPassword = keyPassword
 }
