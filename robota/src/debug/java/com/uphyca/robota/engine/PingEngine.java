@@ -14,17 +14,29 @@
  * limitations under the License.
  */
 
-package com.uphyca.robota;
+package com.uphyca.robota.engine;
 
 import android.content.Context;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class PingEngine extends EngineBase {
 
+    private static final String EVENT_PATTERN_TEMPLATE = "^[@]?%s[:,]?\\s*(?:ping$)";
+
     @Override
-    protected void onMentionReceived(Context context, String mentionBody) {
-        if (mentionBody.equalsIgnoreCase("ping")) {
-            setResultData("pong");
-            return;
+    protected String onMessageReceived(Context context, Bot bot, TextMessage textMessage) {
+        Pattern pt = Pattern.compile(String.format(EVENT_PATTERN_TEMPLATE, bot.getName()), Pattern.CASE_INSENSITIVE);
+        Matcher mt = pt.matcher(textMessage.getText());
+        if (!mt.find()) {
+            return null;
         }
+        return "PONG";
+    }
+
+    @Override
+    protected Help describe(Context context) {
+        return new Help("ping", "Reply with pong");
     }
 }

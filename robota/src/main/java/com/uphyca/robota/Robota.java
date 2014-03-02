@@ -21,11 +21,16 @@ package com.uphyca.robota;
  */
 public class Robota {
 
-    private static final String INTENT = "io.idobata";
+    private static final String INTENT = "com.uphyca.robota";
     private static final String ACTION = INTENT + ".action";
     private static final String EXTRA = INTENT + ".extra";
+    private static final String PERMISSION = INTENT + ".permission";
+
+    // Message created event
 
     public static final String ACTION_MESSAGE_CREATED = ACTION + ".MESSAGE_CREATED";
+
+    public static final String PERMISSION_RECEIVE_MESSAGE_CREATED = PERMISSION + ".RECEIVE_MESSAGE_CREATED";
 
     public static final String EXTRA_ID = EXTRA + ".ID";
     public static final String EXTRA_BODY = EXTRA + ".BODY";
@@ -44,4 +49,6 @@ public class Robota {
 
     public static final String EXTRA_BOT_ID = EXTRA + ".BOT_ID";
     public static final String EXTRA_BOT_NAME = EXTRA + ".BOT_NAME";
+    public static final String EXTRA_BOT_API_TOKEN = EXTRA + ".BOT_API_TOKEN";
+    public static final String EXTRA_BOT_ICON_URL = EXTRA + ".BOT_ICON_URL";
 }

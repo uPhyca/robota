@@ -69,6 +69,7 @@ import static com.uphyca.robota.Robota.EXTRA_SENDER_ICON_URL;
 import static com.uphyca.robota.Robota.EXTRA_SENDER_ID;
 import static com.uphyca.robota.Robota.EXTRA_SENDER_NAME;
 import static com.uphyca.robota.Robota.EXTRA_SENDER_TYPE;
+import static com.uphyca.robota.Robota.PERMISSION_RECEIVE_MESSAGE_CREATED;
 import static com.uphyca.robota.data.IdobataUtils.eventToMessage;
 import static com.uphyca.robota.data.IdobataUtils.toLongArray;
 import static com.uphyca.robota.data.IdobataUtils.toStringArray;
@@ -252,7 +253,7 @@ public class RobotaService extends Service implements IdobataStream.ConnectionLi
         intent.putExtra(EXTRA_BOT_NAME, mBot.getName());
 
         Uri roomUri = toRoomUri(organizationSlug, roomName);
-        sendOrderedBroadcast(intent, null, new MessageCreatedResultReceiver(roomUri), mServiceHandler, 0, null, null);
+        sendOrderedBroadcast(intent, PERMISSION_RECEIVE_MESSAGE_CREATED, new MessageCreatedResultReceiver(roomUri), mServiceHandler, 0, null, null);
     }
 
     private Intent pack(Message message, String organizationSlug, String roomName) {

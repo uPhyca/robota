@@ -2,11 +2,25 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
 
+    <uses-permission android:name="com.uphyca.robota.permission.RECEIVE_MESSAGE_CREATED"/>
+
     <application>
 
-        <receiver android:name="com.uphyca.robota.PingEngine">
+        <receiver android:name="com.uphyca.robota.engine.PingEngine">
             <intent-filter>
-                <action android:name="io.idobata.action.MESSAGE_CREATED" />
+                <action android:name="com.uphyca.robota.action.MESSAGE_CREATED"/>
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name="com.uphyca.robota.engine.EchoEngine">
+            <intent-filter>
+                <action android:name="com.uphyca.robota.action.MESSAGE_CREATED"/>
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name="com.uphyca.robota.engine.TimeEngine">
+            <intent-filter>
+                <action android:name="com.uphyca.robota.action.MESSAGE_CREATED"/>
             </intent-filter>
         </receiver>
 
