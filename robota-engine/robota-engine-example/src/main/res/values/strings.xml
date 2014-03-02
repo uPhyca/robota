@@ -9,7 +9,7 @@
     <string name="description_help"><![CDATA[Displays all of the help commands that ${bot_name} knows about.]]></string>
 
     <string name="label_help_query"><![CDATA[${bot_name} help <query>]]></string>
-    <string name="description_help_query"><![CDATA[Displays all of the help commands that ${bot_name} knows about.]]></string>
+    <string name="description_help_query"><![CDATA[Displays all help commands that match <query>.]]></string>
 
     <string name="label_ping"><![CDATA[${bot_name} ping]]></string>
     <string name="description_ping"><![CDATA[Reply with pong]]></string>
