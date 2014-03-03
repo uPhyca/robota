@@ -105,7 +105,7 @@ public class EchoEngine extends EngineBase {
 Download
 -----
 
-robota releases are available on [Google Play](https://play.google.com/store/apps/details?id=com.uphyca.robota), and robota-engine-budcle also available on [Google Play](https://play.google.com/store/apps/details?id=com.uphyca.robota). 
+robota releases are available on [Google Play](https://play.google.com/store/apps/details?id=com.uphyca.robota), and robota-engine-budcle also available on [Google Play](https://play.google.com/store/apps/details?id=com.uphyca.robota.engine.bundle). 
 
 robota-engine releases are available on [Maven Central](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22robota-engine-core%22).
 
