@@ -1,4 +1,8 @@
-[![Android app on Google Play](https://developer.android.com/images/brand/en_app_rgb_wo_45.png)](https://play.google.com/store/apps/details?id=com.uphyca.robota)
+robota  | robota-engine-bundle | robota-shell
+------------- | ------------- | -------------
+[![Android app on Google Play](https://developer.android.com/images/brand/en_app_rgb_wo_45.png)](https://play.google.com/store/apps/details?id=com.uphyca.robota)  | [![Android app on Google Play](https://developer.android.com/images/brand/en_app_rgb_wo_45.png)](https://play.google.com/store/apps/details?id=com.uphyca.robota.engine.bundle) | [![Android app on Google Play](https://developer.android.com/images/brand/en_app_rgb_wo_45.png)](https://play.google.com/store/apps/details?id=com.uphyca.robota.shell)
+
+
 
 
 robota makes your Android phone as Idobata(https://idobata.io) bot
@@ -101,11 +105,23 @@ public class EchoEngine extends EngineBase {
 }
 ```
 
+robota-engine-bundle
+----
+robota-engine-bundle provides following command.
+
+ - help
+ - ping
+ - echo
+
+robota-shell
+----
+robota-shell provides device's shell interface via Idobata.
+
 
 Download
 -----
 
-robota releases are available on [Google Play](https://play.google.com/store/apps/details?id=com.uphyca.robota), and robota-engine-budcle also available on [Google Play](https://play.google.com/store/apps/details?id=com.uphyca.robota.engine.bundle). 
+robota releases are available on [Google Play](https://play.google.com/store/apps/details?id=com.uphyca.robota), robota-engine-bundle available on [Google Play](https://play.google.com/store/apps/details?id=com.uphyca.robota.engine.bundle) and robota-shell also available on [Google Play](https://play.google.com/store/apps/details?id=com.uphyca.robota.shell)
 
 robota-engine releases are available on [Maven Central](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22robota-engine-core%22).
 
