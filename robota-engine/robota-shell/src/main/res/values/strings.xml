@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">robota-shell</string>
+    <string name="hello_world"><![CDATA[Try mention with message \"shell <command>\" to your bot on Idobata.]]></string>
+
+    <string name="label_shell"><![CDATA[${bot_name} shell <command>]]></string>
+    <string name="description_shell"><![CDATA[Run remote shell command]]></string>
+
+</resources>
