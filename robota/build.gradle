@@ -1,11 +1,11 @@
-apply plugin: 'android'
+apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 19
-    buildToolsVersion "19.0.3"
+    buildToolsVersion "20.0.0"
 
     defaultConfig {
-        packageName "com.uphyca.robota"
+        applicationId "com.uphyca.robota"
         minSdkVersion 15
         targetSdkVersion 19
         versionCode VERSION_CODE as int
@@ -25,7 +25,7 @@ android {
 
     buildTypes {
         debug {
-            packageNameSuffix ".debug"
+            applicationIdSuffix ".debug"
             versionNameSuffix '-debug'
         }
 
